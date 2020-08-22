@@ -44,4 +44,23 @@ router.get('/covid/stats',(req,res)=>{
       });
 })
 
+
+router.get('/quotes/qod',(req,res)=>{
+  var config = {
+      method: 'get',
+      url: 'https://quotes.rest/qod?category=inspire&language=en',
+      headers: {}
+    };
+    
+    axios(config)
+    .then(function (response) {
+      let data = response.data
+      res.json(data)
+    })
+    .catch(function (error) {       
+      let errorResponse = {status:"error","message":error.message}
+      res.json(errorResponse)             
+    });
+})
+
 module.exports = router;

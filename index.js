@@ -13,7 +13,7 @@ const sendOpt = {
 app.use(function (req, res, next) {
     let clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress
     let reqTime = moment();
-    console.log(`${clientIP}--> Request received`)
+    console.log(`${clientIP}--> Request received for ${req.url}`)
     
     res.on('finish', function(){
         let resTime = moment();
