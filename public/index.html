@@ -5,7 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hello Bulma!</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
@@ -18,7 +21,17 @@
         <h2 class="subtitle">
           India focused Covid-19 Monitor
         </h2>
-        <div class="tags">
+        <div class="tags">         
+          <div class="tags has-addons">
+            <span class="tag has-background-info">
+              <span class="icon has-text-info">
+                <i class="fas fa-info-circle has-text-white"></i>
+              </span>
+            </span>
+            <span class="tag ">GLOBAL STATISTICS</span>
+          </div>
+        </div>        
+        <div class="tags">         
           <div class="tags has-addons">
             <span class="tag">23,146,237</span>
             <span class="tag is-danger">Confirmed</span>
@@ -40,11 +53,21 @@
   </section>
   <section class="section">
     <div class="container">
+  <div class="field is-grouped is-grouped-multiline">
+    <div class="control" id="date-time">
+      <div class="tags has-addons">
+        <span class="tag is-info is-large">25th August 2020</span>
+        <span class="tag is-dark is-large">05:45:53 IST </span>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
 
       <nav class="level">
         <div class="level-item has-text-centered">
           <div>
-            <p class="heading has-text-danger">Confirmed</p>
+            <p class="tag heading has-text-danger is-light">Confirmed</p>
             <p class="title has-text-danger">297,9616</p>
             <p class="heading"> - </p>
 
@@ -52,7 +75,7 @@
         </div>
         <div class="level-item has-text-centered">
           <div>
-            <p class="heading has-text-info">Active</p>
+            <p class="tag heading has-text-info is-light" >Active</p>
             <p class="title has-text-info">699,882</p>
             <p class="heading">+2223,236</p>
 
@@ -60,14 +83,14 @@
         </div>
         <div class="level-item has-text-centered">
           <div>
-            <p class="heading has-text-success">Recovered</p>
+            <p class="tag heading has-text-success is-light">Recovered</p>
             <p class="title has-text-success">2223,236</p>
             <p class="heading">+2223,236</p>
           </div>
         </div>
         <div class="level-item has-text-centered ">
           <div>
-            <p class="heading has-text-grey">Deaths</p>
+            <p class="tag heading has-text-grey is-light">Deaths</p>
             <p class="title has-text-grey">55952</p>
             <p class="heading">+2223,236</p>
 
@@ -79,7 +102,7 @@
   <section class="section">
     <div class="content has-text-centered">
       <p class="mb-0">
-        <blockquote><strong>Don't fear failure so much that you refuse to try new things. The saddest summary of life contains three descriptions: could have, might have, and should have "</strong>
+        <blockquote><strong>" Don't fear failure so much that you refuse to try new things. The saddest summary of life contains three descriptions: could have, might have, and should have "</strong>
         <p>- Shakti Gawain </p>
         </blockquote>
       </p>

@@ -9,6 +9,7 @@ const sendOpt = {
     root: publicDir
 }
 
+app.use(express.static('public'))
 
 app.use(function (req, res, next) {
     let clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress
