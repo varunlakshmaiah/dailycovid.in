@@ -1,3 +1,23 @@
 div#date-time {
     margin: auto;
 }
+
+#logo {
+    width: 100px;
+    margin: auto;
+    background: white;
+    padding: 11px;
+    text-align: center;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    color: black !important;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 29px;
+    border-radius: 15px 15px;
+}
+
+#logo-subtitle {
+    margin-bottom:2rem
+}

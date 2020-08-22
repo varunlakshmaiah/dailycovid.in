@@ -4,62 +4,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Bulma!</title>
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <title>Covid-19 Tracker for India - dailycovid.in</title>
+  <script async src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <script src="/js/script.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
   <link rel="stylesheet" href="/css/style.css">
-
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
   <section class="hero is-dark">
     <div class="hero-body has-text-centered">
       <div class="container">
-        <h1 class="title ">
+        <h1 id="logo" class="title ">
           Daily Covid
         </h1>
-        <h2 class="subtitle">
-          India focused Covid-19 Monitor
+        <h2 id="logo-subtitle">
+          India focused Covid-19 Tracker
         </h2>
-        <div class="tags">         
+        <div class="tags">
           <div class="tags has-addons">
             <span class="tag has-background-info">
               <span class="icon has-text-info">
-                <i class="fas fa-info-circle has-text-white"></i>
+                <i class="fas fa-globe-africa has-text-white"></i>
               </span>
             </span>
-            <span class="tag ">GLOBAL STATISTICS</span>
+            <span class="tag heading ">GLOBAL STATISTICS</span>
           </div>
-        </div>        
-        <div class="tags">         
+        </div>
+        <div class="tags">
           <div class="tags has-addons">
-            <span class="tag">23,146,237</span>
             <span class="tag is-danger">Confirmed</span>
+            <span class="tag" id="totalCases">23,146,237</span>
           </div>
         </div>
         <div class="tags">
           <div class="tags has-addons">
-            <span class="tag">15,730,632</span>
             <span class="tag is-success">Recovered</span>
+            <span class="tag" id="totalRecovered">15,730,632</span>
           </div>
         </div>
         <div class="tags">
           <div class="tags has-addons">
-            <span class="tag">803,655</span>
             <span class="tag is-warning">Deaths</span>
+            <span class="tag" id="totalDeaths">803,655</span>
           </div>
         </div>
       </div>
   </section>
   <section class="section">
     <div class="container">
-  <div class="field is-grouped is-grouped-multiline">
-    <div class="control" id="date-time">
-      <div class="tags has-addons">
-        <span class="tag is-info is-large">25th August 2020</span>
-        <span class="tag is-dark is-large">05:45:53 IST </span>
-      </div>
-    </div>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control" id="date-time">
+          <div class="tags has-addons">
+            <span class="tag is-info is-large" id="activeDate">25 August 2020</span>
+            <span class="tag is-dark is-large" id="activeTime">05:45:53</span>
+          </div>
+        </div>
   </section>
   <section class="section">
     <div class="container">
@@ -68,31 +74,31 @@
         <div class="level-item has-text-centered">
           <div>
             <p class="tag heading has-text-danger is-light">Confirmed</p>
-            <p class="title has-text-danger">297,9616</p>
+            <p class="title has-text-danger" id="indiaConfirmed">297,9616</p>
             <p class="heading"> - </p>
 
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
-            <p class="tag heading has-text-info is-light" >Active</p>
-            <p class="title has-text-info">699,882</p>
-            <p class="heading">+2223,236</p>
+            <p class="tag heading has-text-info is-light">Active</p>
+            <p class="title has-text-info" id="indiaActive">699,882</p>
+            <p class="heading has-text-info" id="indiaActiveDelta">+2223,236</p>
 
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="tag heading has-text-success is-light">Recovered</p>
-            <p class="title has-text-success">2223,236</p>
-            <p class="heading">+2223,236</p>
+            <p class="title has-text-success" id="indiaRecovered">2223,236</p>
+            <p class="heading has-text-success" id="indiaRecoveredDelta">+2223,236</p>
           </div>
         </div>
         <div class="level-item has-text-centered ">
           <div>
             <p class="tag heading has-text-grey is-light">Deaths</p>
-            <p class="title has-text-grey">55952</p>
-            <p class="heading">+2223,236</p>
+            <p class="title has-text-grey" id="indiaDeaths">55952</p>
+            <p class="heading" id="indiaDeathsDelta">+2223,236</p>
 
           </div>
         </div>
@@ -100,15 +106,45 @@
     </div>
   </section>
   <section class="section">
-    <div class="content has-text-centered">
-      <p class="mb-0">
-        <blockquote><strong>" Don't fear failure so much that you refuse to try new things. The saddest summary of life contains three descriptions: could have, might have, and should have "</strong>
-        <p>- Shakti Gawain </p>
+    <div class="container">
+      <div class="content has-text-centered">
+        <p class="mb-0">
+        <blockquote><strong id="quote">" Don't fear failure so much that you refuse to try new things. The saddest
+            summary of life
+            contains three descriptions: could have, might have, and should have "</strong>
+          <p id="quoteAuthor">- Shakti Gawain </p>
         </blockquote>
-      </p>
+        </p>
+      </div>
     </div>
   </section>
-  
+  <section class="section">
+    <div class="container">
+
+      <table id="stateWiseTabularView" class="table is-bordered is-striped is-narrow is-responsive is-fullwidth">
+        <thead>
+          <tr>
+            <th>State/UT</th>
+            <th>Confirmed</th>
+            <th>Active</th>
+            <th>Recovered</th>
+            <th>Deaths</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Karnataka</td>
+            <td>2,71,876</td>
+            <td>82,677</td>
+            <td>1,84,568</td>
+            <td>4,615</td>
+          </tr>
+
+          </tr>
+        </tbody>
+      </table>
+  </section>
+  </div>
 </body>
 
 </html>
