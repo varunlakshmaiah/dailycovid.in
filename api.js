@@ -1,7 +1,7 @@
 const express = require("express")
-let router = express.Router();
+const router = express.Router();
 const axios = require('axios')
-
+const quotes = require('./quotes.json')
 
 
 router.get('/covid/india',(req,res)=>{
@@ -45,22 +45,9 @@ router.get('/covid/stats',(req,res)=>{
 })
 
 
-router.get('/quotes/qod',(req,res)=>{
-  var config = {
-      method: 'get',
-      url: 'https://quotes.rest/qod?category=inspire&language=en',
-      headers: {}
-    };
-    
-    axios(config)
-    .then(function (response) {
-      let data = response.data
-      res.json(data)
-    })
-    .catch(function (error) {       
-      let errorResponse = {status:"error","message":error.message}
-      res.json(errorResponse)             
-    });
+router.get('/quotes/qod',(req,res)=>{  
+  let data =  quotes[Math.floor(Math.random() * quotes.length)]; 
+  res.json({status:"success",data})
 })
 
 module.exports = router;
