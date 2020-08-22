@@ -5,10 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Covid-19 Tracker for India - dailycovid.in</title>
-  <script async src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-  <script src="/js/script.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -40,19 +36,19 @@
         <div class="tags">
           <div class="tags has-addons">
             <span class="tag is-danger">Confirmed</span>
-            <span class="tag" id="totalCases">23,146,237</span>
+            <span class="tag is-loading" id="totalCases"></span>
           </div>
         </div>
         <div class="tags">
           <div class="tags has-addons">
             <span class="tag is-success">Recovered</span>
-            <span class="tag" id="totalRecovered">15,730,632</span>
+            <span class="tag" id="totalRecovered"></span>
           </div>
         </div>
         <div class="tags">
           <div class="tags has-addons">
             <span class="tag is-warning">Deaths</span>
-            <span class="tag" id="totalDeaths">803,655</span>
+            <span class="tag" id="totalDeaths"></span>
           </div>
         </div>
       </div>
@@ -74,31 +70,30 @@
         <div class="level-item has-text-centered">
           <div>
             <p class="tag heading has-text-danger is-light">Confirmed</p>
-            <p class="title has-text-danger" id="indiaConfirmed">297,9616</p>
-            <p class="heading"> - </p>
+            <p class="title has-text-danger" id="indiaConfirmed"></p>
+            <p class="heading has-text-danger" id="indiaConfirmedDelta">-</p>
 
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="tag heading has-text-info is-light">Active</p>
-            <p class="title has-text-info" id="indiaActive">699,882</p>
-            <p class="heading has-text-info" id="indiaActiveDelta">+2223,236</p>
-
+            <p class="title has-text-info" id="indiaActive"></p>
+            <p class="heading"> - </p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="tag heading has-text-success is-light">Recovered</p>
-            <p class="title has-text-success" id="indiaRecovered">2223,236</p>
-            <p class="heading has-text-success" id="indiaRecoveredDelta">+2223,236</p>
+            <p class="title has-text-success" id="indiaRecovered"></p>
+            <p class="heading has-text-success" id="indiaRecoveredDelta">-</p>
           </div>
         </div>
         <div class="level-item has-text-centered ">
           <div>
             <p class="tag heading has-text-grey is-light">Deaths</p>
-            <p class="title has-text-grey" id="indiaDeaths">55952</p>
-            <p class="heading" id="indiaDeathsDelta">+2223,236</p>
+            <p class="title has-text-grey" id="indiaDeaths"></p>
+            <p class="heading" id="indiaDeathsDelta">-</p>
 
           </div>
         </div>
@@ -145,6 +140,9 @@
       </table>
   </section>
   </div>
+  <script async src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="/js/script.js"></script>
 </body>
 
 </html>
