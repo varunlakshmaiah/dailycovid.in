@@ -45,7 +45,7 @@ router.get('/covid/stats',(req,res)=>{
 })
 
 
-router.get('/quotes/qod',(req,res)=>{  
+router.get('/quotes/random',(req,res)=>{  
   let data =  quotes[Math.floor(Math.random() * quotes.length)]; 
   res.json({status:"success",data})
 })
