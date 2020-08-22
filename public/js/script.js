@@ -35,4 +35,22 @@ $(document).ready(function () {
             console.log(rsp.message);
         }
     })
+
+    $("#quote").val(`<div class="loader"></div>`)
+    $.getJSON("/api/quotes/random", function (rsp) {
+        if (rsp.status == "success") {
+            const quoteData = rsp.data
+            finalQuote = `<strong>" ${quoteData.text} "</strong>
+            <p id="quoteAuthor">- ${quoteData.author || "Unknown"} </p>`
+            console.log(finalQuote)
+            $("#quote").replaceWith(finalQuote)            
+        }
+        else {
+            $("#quote").replaceWith(``)
+            console.log(rsp.message);
+        }
+    })
+
+
+
 });
