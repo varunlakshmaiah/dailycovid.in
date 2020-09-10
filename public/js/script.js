@@ -12,6 +12,7 @@ $(document).ready(function () {
 
   updateGlobalData = () => {
     $.getJSON("/api/covid/stats", function (rsp) {
+      console.log(rsp,"<><>");
       if (rsp.status == "success") {
         const globalData = rsp.data;
         $("#totalCases")
@@ -27,7 +28,6 @@ $(document).ready(function () {
         $("#totalCases,#totalRecovered,#totalDeaths").removeClass(
           "button is-loading"
         );
-        console.log(rsp.message);
       }
     });
   };

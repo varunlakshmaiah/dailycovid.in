@@ -32,6 +32,7 @@ router.get('/covid/stats',(req,res)=>{
       
       axios(config)
       .then(function (response) {
+        console.log(response)
         let data = response.data
         data = data["results"][0]
         delete data.source
