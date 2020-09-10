@@ -1,6 +1,9 @@
-$(document).ready(function () {
-    console.log("Page loaded")
-
+$(document).ready(function () {    
+    console.log("Page loaded")    
+    setInterval(function(){
+        $("#currentTime").text(moment().format('LTS'))
+    },1000)
+    $("#currentDate").text(moment().format('LL'))
     $("#totalCases,#totalRecovered,#totalDeaths").addClass("button is-loading");
     $.getJSON("/api/covid/stats", function (rsp) {
         if (rsp.status == "success") {
