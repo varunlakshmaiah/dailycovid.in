@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 3000
-const moment = require('moment')
 const API = require("./api")
 
 const publicDir = __dirname+"/public/"
@@ -13,13 +12,8 @@ app.use(express.static('public'))
 
 app.use(function (req, res, next) {
     let clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress
-    let reqTime = moment();
-    console.log(`${clientIP}--> Request received for ${req.url}`)
-    
-    res.on('finish', function(){
-        let resTime = moment();
-        let respDuration = moment.duration(resTime.diff(reqTime)).asSeconds();
-        console.log(`Responded to ${clientIP} in ${respDuration}s`);
+    res.on('finish', function(){       
+        console.log(`Responded to ${clientIP}`);
     });
     next()
   })
@@ -40,6 +34,6 @@ app.get('/download', (req, res) => {
 })
 
 
-const server = app.listen(PORT, () => {
+ app.listen(PORT, () => {
     console.log(`-------- ${new Date().toUTCString()} : App listening at http://localhost:${PORT} -------`)
 })
