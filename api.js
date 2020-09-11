@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios')
 const quotes = require('./quotes.json')
 
-
+// Covid India Stats
 router.get('/covid/india',(req,res)=>{
     var config = {
         method: 'get',
@@ -22,7 +22,7 @@ router.get('/covid/india',(req,res)=>{
       });
 })
 
-
+// Covid Global Stats
 router.get('/covid/stats',(req,res)=>{
     var config = {
         method: 'get',
@@ -32,7 +32,6 @@ router.get('/covid/stats',(req,res)=>{
       
       axios(config)
       .then(function (response) {
-        console.log(response)
         let data = response.data
         data = data["results"][0]
         delete data.source
@@ -45,7 +44,7 @@ router.get('/covid/stats',(req,res)=>{
       });
 })
 
-
+// Random Quotes Route
 router.get('/quotes/random',(req,res)=>{  
   let data =  quotes[Math.floor(Math.random() * quotes.length)]; 
   res.json({status:"success",data})

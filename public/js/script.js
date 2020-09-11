@@ -10,6 +10,7 @@ $(document).ready(function () {
     $("#currentDate").text(moment().format("LL"));
   };
 
+  
   updateGlobalData = () => {
     $.getJSON("/api/covid/stats", function (rsp) {
       console.log(rsp,"<><>");
@@ -82,6 +83,8 @@ $(document).ready(function () {
       }
     });
   };
+
+  updateDate();
 
   $("#totalCases,#totalRecovered,#totalDeaths").addClass("button is-loading");
   updateGlobalData();

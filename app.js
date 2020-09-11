@@ -1,39 +1,31 @@
-const express = require('express')
-const app = express()
-const PORT = process.env.PORT || 3000
-const API = require("./api")
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 3000;
+const API = require("./api");
 
-const publicDir = __dirname+"/public/"
+const publicDir = __dirname + "/public/";
 const sendOpt = {
-    root: publicDir
-}
+  root: publicDir,
+};
 
-app.use(express.static('public'))
+// middleware which sets directory as public folder
+app.use(express.static("public")); 
 
-app.use(function (req, res, next) {
-    let clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress
-    res.on('finish', function(){       
-        console.log(`Responded to ${clientIP}`);
-    });
-    next()
-  })
+// middleware to process initial request
+app.get("/", (req, res) => {
+  res.sendFile("index.html", sendOpt, function (err) {
+    if (!err) {
+    }
+  });
+});
 
-app.use('/api',API);
-  
-app.get('/', (req, res) => {
-    res.sendFile("index.html",sendOpt,function(err){
-      if(!err)
-      {
-      }
-  })
-})
-
-app.get('/download', (req, res) => {
-    file = publicDir+"insta.jpg"
-    res.download(file)  
-})
+// middleware to process API Routes
+app.use("/api", API);
 
 
- app.listen(PORT, () => {
-    console.log(`-------- ${new Date().toUTCString()} : App listening at http://localhost:${PORT} -------`)
-})
+// Function which listens for requests specific PORT
+app.listen(PORT, () => {
+  console.log(
+    `-------- ${new Date().toUTCString()} : App listening at http://localhost:${PORT} -------`
+  );
+});
