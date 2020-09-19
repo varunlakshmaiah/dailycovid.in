@@ -34,6 +34,10 @@ div#date-time {
   animation: spin 2s linear infinite;
 }
 
+#love {
+  color: red;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
   0% {
