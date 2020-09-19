@@ -10,10 +10,28 @@ $(document).ready(function () {
     $("#currentDate").text(moment().format("LL"));
   };
 
-  
+  translateData = (data) => {
+    const initialElem = data[0]
+    let finalObj = {}
+    if (data.length !== 0 && initialElem && typeof (initialElem) === 'object' && Object.keys(initialElem).length !== 0) {
+      const keyNames = Object.keys(initialElem);
+      keyNames.forEach((itm, idx) => {
+        finalObj[itm] = []
+      })
+      data.forEach((dataItm, idx) => {
+        keyNames.forEach((keyItm, idx) => {
+          finalObj[keyItm].push(dataItm[keyItm] || null)
+        })
+      })
+      return finalObj
+    }
+    else {
+      return {}
+    }
+  }
+
   updateGlobalData = () => {
     $.getJSON("/api/covid/stats", function (rsp) {
-      console.log(rsp,"<><>");
       if (rsp.status == "success") {
         const globalData = rsp.data;
         $("#totalCases")
@@ -37,6 +55,83 @@ $(document).ready(function () {
     $.getJSON("/api/covid/india", function (rsp) {
       if (rsp.status == "success") {
         const indianData = rsp.data;
+        const timeseries = translateData(indianData.cases_time_series);
+        console.log(timeseries);
+        var timeseriesCtx = document.getElementById('timeSeries').getContext('2d');
+        var timeseriesChart = new Chart(timeseriesCtx, {
+          type: 'line',
+          data: {
+            labels: timeseries["date"],
+            datasets: [{
+              borderColor: '#f14668',
+              data: timeseries["totalconfirmed"],
+              fill: false,
+            },
+            {
+              borderColor: '#48c774',
+              data: timeseries["totalrecovered"],
+              fill: false,
+            },
+            {
+              borderColor: '#7a7a7a',
+              data: timeseries["totaldeceased"],
+              fill: false,
+            }]
+          },
+          options: {
+            tooltips:{
+              mode:'index',
+              intersect:false
+            },
+            hover:{
+              mode: 'nearest',
+              intersect:false
+            },
+            layout: {
+              padding: {
+                left: 50,
+                right: 50,
+                top: 0,
+                bottom: 0
+              }
+            },
+            responsive: true,
+            aspectRatio: 3,
+            legend: {
+              display: false
+            },
+            elements: {
+              point: {
+                radius: 1
+              }
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  display: false
+                },
+                gridLines: {
+                  display: false,
+                  drawBorder: false,
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 1,
+                  display: false
+                },
+                gridLines: {
+                  display: false,
+                  drawBorder: false,
+                }
+              }]
+            }
+          }
+        });
+
+
+        // console.log(timeseriesChart.data);  
+        // timeseriesChart.update();
         stateData = indianData.statewise;
         stateStats = stateData[0];
         $("#indiaConfirmed")
@@ -75,8 +170,8 @@ $(document).ready(function () {
         const quoteData = rsp.data;
         finalQuote = `<div id="quote"><strong>" ${quoteData.text} "</strong>
                 <p id="quoteAuthor">- ${
-                  quoteData.author || "Unknown"
-                } </p></div>`;
+          quoteData.author || "Unknown"
+          } </p></div>`;
         $("#quote").replaceWith(finalQuote);
       } else {
         $("#quote").replaceWith(``);
@@ -103,3 +198,4 @@ $(document).ready(function () {
     updateQuote();
   }, 600000);
 });
+
