@@ -56,6 +56,7 @@ $(document).ready(function() {
                 const indianData = rsp.data;
                 const timeseries = translateData(indianData.cases_time_series);
                 var timeseriesCtx = document.getElementById('timeSeries').getContext('2d');
+
                 var timeseriesChart = new Chart(timeseriesCtx, {
                     type: 'line',
                     data: {
@@ -95,7 +96,7 @@ $(document).ready(function() {
                             intersect: false,
                             callbacks: {
                                 label: function(tooltipItem, data) {
-                                    return tooltipItem.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                    return tooltipItem.yLabel.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,");
                                 }
                             }
                         },
@@ -148,6 +149,7 @@ $(document).ready(function() {
                 });
 
                 stateData = indianData.statewise;
+
                 stateStats = stateData[0];
                 $("#indiaConfirmed")
                     .text(Number(stateStats["confirmed"]).toLocaleString("en-IN"))
@@ -170,6 +172,15 @@ $(document).ready(function() {
                 $("#indiaDeathsDelta").text(
                     "+" + Number(stateStats["deltadeaths"]).toLocaleString("en-IN")
                 );
+
+                stateData.shift();
+                var trHTML = '';
+                $.each(stateData, function(i, item) {
+                    trHTML += '<tr ><td> <a href="#" title="' + item.statenotes + '">' + item.state + '</a></td><td>' + Number(item.confirmed).toLocaleString("en-IN") + '</td><td>' + Number(item.active).toLocaleString("en-IN") + '</td><td>' + Number(item.recovered).toLocaleString("en-IN") + '</td><td>' + Number(item.deaths).toLocaleString("en-IN") + '</td></tr>';
+                });
+                $('#stateInfo > tbody').append(trHTML);
+
+
             } else {
                 $(
                     "#indiaConfirmed,#indiaActive,#indiaRecovered,#indiaDeaths"
