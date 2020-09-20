@@ -2,134 +2,134 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Covid-19 Tracker for India - dailycovid.in</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-  <link rel="manifest" href="site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Covid-19 Tracker for India - dailycovid.in</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
 </head>
 
 <body>
-  <section class="hero is-dark">
-    <div class="hero-body has-text-centered">
-      <div class="container">
-        <h1 id="logo" class="title ">
-          Daily Covid
-        </h1>
-        <h2 id="logo-subtitle">
-          India focused Covid-19 Tracker
-        </h2>
-        <div class="tags">
-          <div class="tags has-addons">
-            <span class="tag has-background-info">
-              <span class="icon has-text-info">
-                <i class="fas fa-globe-africa has-text-white"></i>
-              </span>
-            </span>
-            <span class="tag heading ">GLOBAL STATISTICS</span>
-          </div>
-        </div>
-        <div class="tags">
-          <div class="tags has-addons">
-            <span class="tag is-danger">Confirmed</span>
-            <span class="tag is-loading" id="totalCases"></span>
-          </div>
-        </div>
-        <div class="tags">
-          <div class="tags has-addons">
-            <span class="tag is-success">Recovered</span>
-            <span class="tag" id="totalRecovered"></span>
-          </div>
-        </div>
-        <div class="tags">
-          <div class="tags has-addons">
-            <span class="tag is-warning">Deaths</span>
-            <span class="tag" id="totalDeaths"></span>
-          </div>
-        </div>
-      </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <div class="field is-grouped is-grouped-multiline">
-        <div class="control" id="date-time">
-          <div class="tags has-addons">
-            <span class="tag is-info is-large" id="currentDate"></span>
-            <span class="tag is-dark is-large" id="currentTime"></span>
-          </div>
-        </div>
-  </section>
+    <section class="hero is-dark">
+        <div class="hero-body has-text-centered">
+            <div class="container">
+                <h1 id="logo" class="title ">
+                    Daily Covid
+                </h1>
+                <h2 id="logo-subtitle">
+                    India focused Covid-19 Tracker
+                </h2>
+                <div class="tags">
+                    <div class="tags has-addons">
+                        <span class="tag has-background-info">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-globe-africa has-text-white"></i>
+                            </span>
+                        </span>
+                        <span class="tag heading ">GLOBAL STATISTICS</span>
+                    </div>
+                </div>
+                <div class="tags">
+                    <div class="tags has-addons">
+                        <span class="tag is-danger">Confirmed</span>
+                        <span class="tag is-loading" id="totalCases"></span>
+                    </div>
+                </div>
+                <div class="tags">
+                    <div class="tags has-addons">
+                        <span class="tag is-success">Recovered</span>
+                        <span class="tag" id="totalRecovered"></span>
+                    </div>
+                </div>
+                <div class="tags">
+                    <div class="tags has-addons">
+                        <span class="tag is-warning">Deaths</span>
+                        <span class="tag" id="totalDeaths"></span>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="field is-grouped is-grouped-multiline">
+                <div class="control" id="date-time">
+                    <div class="tags has-addons">
+                        <span class="tag is-info is-medium" id="currentDate"></span>
+                        <span class="tag is-dark is-medium" id="currentTime"></span>
+                    </div>
+                </div>
+    </section>
 
-  <section>
-    <div class="container">
-      <canvas id="timeSeries"></canvas>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
+    <section>
+        <div class="container">
+            <canvas id="timeSeries"></canvas>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
 
-      <nav class="level">
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="tag heading has-text-danger is-light">Confirmed</p>
-            <p class="title has-text-danger" id="indiaConfirmed"></p>
-            <p class="heading has-text-danger" id="indiaConfirmedDelta">-</p>
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="tag heading has-text-danger is-light">Confirmed</p>
+                        <p class="title has-text-danger" id="indiaConfirmed"></p>
+                        <p class="heading has-text-danger" id="indiaConfirmedDelta">-</p>
 
-          </div>
-        </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="tag heading has-text-info is-light">Active</p>
-            <p class="title has-text-info" id="indiaActive"></p>
-            <p class="heading"> - </p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="tag heading has-text-success is-light">Recovered</p>
-            <p class="title has-text-success" id="indiaRecovered"></p>
-            <p class="heading has-text-success" id="indiaRecoveredDelta">-</p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered ">
-          <div>
-            <p class="tag heading has-text-grey is-light">Deaths</p>
-            <p class="title has-text-grey" id="indiaDeaths"></p>
-            <p class="heading" id="indiaDeathsDelta">-</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="tag heading has-text-info is-light">Active</p>
+                        <p class="title has-text-info" id="indiaActive"></p>
+                        <p class="heading"> - </p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="tag heading has-text-success is-light">Recovered</p>
+                        <p class="title has-text-success" id="indiaRecovered"></p>
+                        <p class="heading has-text-success" id="indiaRecoveredDelta">-</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered ">
+                    <div>
+                        <p class="tag heading has-text-grey is-light">Deaths</p>
+                        <p class="title has-text-grey" id="indiaDeaths"></p>
+                        <p class="heading" id="indiaDeathsDelta">-</p>
 
-          </div>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </nav>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p class="mb-0">
+                    <blockquote id="quote">
+                    </blockquote>
+                </p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Made with</strong> <i id="love" class="fas fa-heart"></i> by <a href="https://varunlakshmaiah.com">Varun Lakshmaiah</a>
+            </p>
+        </div>
+    </footer>
     </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p class="mb-0">
-        <blockquote id="quote">
-        </blockquote>
-        </p>
-      </div>
-    </div>
-  </section>
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Made with</strong> <i id="love" class="fas fa-heart"></i> by <a href="https://varunlakshmaiah.com">Varun Lakshmaiah</a>
-      </p>
-    </div>
-  </footer>
-  </div>
-  <script async src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg==" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
-  <script src="js/script.js"></script>
+    <script async src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
