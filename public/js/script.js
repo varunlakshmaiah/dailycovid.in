@@ -182,6 +182,7 @@ $(document).ready(function() {
                 $('#stateInfo').DataTable({
                     paging: false,
                     fixedHeader: true,
+                    bInfo: false,
                     order: [
                         [1, "desc"]
                     ]
