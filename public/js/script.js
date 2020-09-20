@@ -106,7 +106,7 @@ $(document).ready(function() {
                             }
                         },
                         responsive: true,
-                        aspectRatio: 5,
+                        aspectRatio: 4,
                         legend: {
                             display: false
                         },
