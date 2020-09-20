@@ -61,6 +61,8 @@ $(document).ready(function() {
                     data: {
                         labels: timeseries["date"],
                         datasets: [{
+                                label: "Confirmed",
+                                backgroundColor: '#f14668',
                                 borderColor: '#f14668',
                                 pointBackgroundColor: '#f14668',
                                 pointBorderColor: '#f14668',
@@ -68,14 +70,18 @@ $(document).ready(function() {
                                 fill: false,
                             },
                             {
+                                label: "Recovered",
                                 borderColor: '#48c774',
+                                backgroundColor: '#48c774',
                                 pointBackgroundColor: '#48c774',
                                 pointBorderColor: '#48c774',
                                 data: timeseries["totalrecovered"],
                                 fill: false,
                             },
                             {
+                                label: "Deaths",
                                 borderColor: '#7a7a7a',
+                                backgroundColor: '#7a7a7a',
                                 pointBackgroundColor: '#7a7a7a',
                                 pointBorderColor: '#7a7a7a',
                                 data: timeseries["totaldeceased"],
@@ -101,14 +107,16 @@ $(document).ready(function() {
                             padding: {
                                 left: 50,
                                 right: 50,
-                                top: 20,
+                                top: 0,
                                 bottom: 20
                             }
                         },
                         responsive: true,
                         aspectRatio: 3,
                         legend: {
-                            display: false
+                            display: true,
+                            position: 'top',
+                            fullWidth: false
                         },
                         elements: {
                             point: {
@@ -166,7 +174,6 @@ $(document).ready(function() {
                 $(
                     "#indiaConfirmed,#indiaActive,#indiaRecovered,#indiaDeaths"
                 ).removeClass("loader");
-                console.log(rsp.message);
             }
         });
     };
