@@ -179,7 +179,13 @@ $(document).ready(function() {
                     trHTML += '<tr ><td> <a href="#" title="' + item.statenotes + '">' + item.state + '</a></td><td>' + Number(item.confirmed).toLocaleString("en-IN") + '</td><td>' + Number(item.active).toLocaleString("en-IN") + '</td><td>' + Number(item.recovered).toLocaleString("en-IN") + '</td><td>' + Number(item.deaths).toLocaleString("en-IN") + '</td></tr>';
                 });
                 $('#stateInfo > tbody').append(trHTML);
-
+                $('#stateInfo').DataTable({
+                    paging: false,
+                    fixedHeader: true,
+                    order: [
+                        [1, "desc"]
+                    ]
+                });
 
             } else {
                 $(
